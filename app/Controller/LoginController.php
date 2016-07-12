@@ -21,7 +21,7 @@ class LoginController extends Controller {
 			# J'insert ensuite dans la base de donnée
 			$manager->insert($_POST['myform']);
 			# Je redirige vers la page liste.php
-			$this->redirectToRoute('liste');
+			$this->redirectToRoute('home');
 		}
 		# affiche la page dans templates/login/inscription.php
 		$this->show('login/inscription');
@@ -43,7 +43,7 @@ class LoginController extends Controller {
 				# On log l'utilisateur (on créer une variable session)
 				$authManager->logUserIn($user);
 				# On redirige vers l'accueil
-				$this->redirectToRoute('liste');
+				$this->redirectToRoute('home');
 			}
 		}
 		$this->show('login/connexion');

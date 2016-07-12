@@ -19,7 +19,12 @@ class DefaultController extends Controller
 	 */
 	public function home()
 	{
+		$user = $this->getUser();
 		$this->show('default/home');
+		
+		$manager = new ArticleManager();
+		$articles = $manager->findAll();
+		$this->show('default/liste', ['liste_des_articles' => $articles, 'utilisateur' => $user]);	
 	}
 
 	public function profil()
@@ -27,19 +32,19 @@ class DefaultController extends Controller
 		$this->show('default/profil');
 	}
 
-	public function categorie($id)
+	public function liste_tag($id)
 	{
-		$this->show('default/categorie');
+		$this->show('default/liste_tag');
 	}
 
-	public function tag($id)
+	public function detail_tag($id)
 	{
-		$this->show('default/tag');
+		$this->show('default/detail_tag');
 	}
 
-	public function taguer()
+	public function form_tag()
 	{
-		$this->show('default/taguer');
+		$this->show('default/form_tag');
 	}
 
 	public function preview()
