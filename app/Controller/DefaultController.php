@@ -3,7 +3,7 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use \Manager\ArticleManager;
+use \Manager\TagManager;
 
 class DefaultController extends Controller
 {
@@ -32,9 +32,10 @@ class DefaultController extends Controller
 		$this->show('default/profil');
 	}
 
-	public function liste_tag($id)
-	{
-		$this->show('default/liste_tag');
+	public function liste_tag($id){
+		$manager = new TagManager();
+		$tags = $manager->findAll();
+		$this->show('default/liste_tag', [ 'liste_des_tags' => $tags]);
 	}
 
 	public function detail_tag($id)

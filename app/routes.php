@@ -17,6 +17,4 @@
 		['GET|POST', '/oublie', 'Login#oublie', 'oublie'],
 		// à rajouter...
 
-
-		
 	);
