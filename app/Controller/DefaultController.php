@@ -4,7 +4,7 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use \Manager\TagManager;
-
+use \Manager\CategorieManager;
 
 class DefaultController extends Controller
 {
@@ -31,12 +31,10 @@ class DefaultController extends Controller
 	}
 
 	public function liste_tag($id){
-
 		$manager = new TagManager();
 		$tags = $manager->findAll();
 		$this->show('default/liste_tag', [ 'liste_des_tags' => $tags]);
 		$this->show('default/liste_tag');
-
 	}
 	public function detail_tag($id)
 	{
