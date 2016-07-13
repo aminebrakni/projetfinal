@@ -5,6 +5,7 @@ namespace Controller;
 use \W\Controller\Controller;
 use \Manager\TagManager;
 
+
 class DefaultController extends Controller
 {
 	// ['GET', '/', 'Default#home', 'home'], // accueil
@@ -19,12 +20,9 @@ class DefaultController extends Controller
 	 */
 	public function home()
 	{
-		$user = $this->getUser();
-		$this->show('default/home');
-		
-		$manager = new ArticleManager();
-		$articles = $manager->findAll();
-		$this->show('default/liste', ['liste_des_articles' => $articles, 'utilisateur' => $user]);	
+		$manager = new CategorieManager();
+		$categorie = $manager->findAll();
+		$this->show('default/home', [ 'categorie' => $categorie ]);
 	}
 
 	public function profil()
@@ -33,11 +31,13 @@ class DefaultController extends Controller
 	}
 
 	public function liste_tag($id){
+
 		$manager = new TagManager();
 		$tags = $manager->findAll();
 		$this->show('default/liste_tag', [ 'liste_des_tags' => $tags]);
-	}
+		$this->show('default/liste_tag');
 
+	}
 	public function detail_tag($id)
 	{
 		$this->show('default/detail_tag');
