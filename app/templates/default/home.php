@@ -1,24 +1,14 @@
-<?php $this->layout('layout', ['title' => 'Accueil']) ?>
+<?php $this->layout('layout', ['title' => 'Titre']) ?>
 
 <?php $this->start('main_content') ?>
 
-	<nav>
-	<?php if(isset($_SESSION['user'])) { ?>
-		Bonjour <?= $_SESSION['user']['username'] ?>
-		<a href="<?= $this->url('deconnexion') ?>">Déconnexion</a> 
-
-	<?php } else { ?>
-		<a href="<?= $this->url('connexion') ?>">Connexion</a> -
-		<a href="<?= $this->url('inscription') ?>">Inscription</a><?php } ?>		
-	</nav>
-	
-	<h1>Titre de l'application</h1>
 		
-	<section role="section">
-	<?php foreach ($liste_des_articles as $article): ?>
-			<!-- La fonction e() permet de nettoyer (htmlspecialchars etc ...) -->
+	<section role="section" class="themes">
+		<!-- La fonction e() permet de nettoyer (htmlspecialchars etc ...) -->
+	<?php foreach ($categorie as $article): ?>		
 			<article role="article">
-				<a href="<?= $this->url('detail', ['id' => $article['id']])?>"><?= $this->e($article['titre']) ?></a>
+				<a href="<?= $this->url('liste_tag', ['id' => $article['id']])?>"><?= $this->e($article['rubrique']);
+				 ?></a>
 			</article>		
 	<?php endforeach; ?>
 	</section>

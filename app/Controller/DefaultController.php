@@ -3,7 +3,7 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use \Manager\ArticleManager;
+use \Manager\CategorieManager;
 
 class DefaultController extends Controller
 {
@@ -19,12 +19,9 @@ class DefaultController extends Controller
 	 */
 	public function home()
 	{
-		$user = $this->getUser();
-		$this->show('default/home');
-		
-		$manager = new ArticleManager();
-		$articles = $manager->findAll();
-		$this->show('default/liste', ['liste_des_articles' => $articles, 'utilisateur' => $user]);	
+		$manager = new CategorieManager();
+		$categorie = $manager->findAll();
+		$this->show('default/home', [ 'categorie' => $categorie ]);
 	}
 
 	public function profil()
@@ -32,11 +29,9 @@ class DefaultController extends Controller
 		$this->show('default/profil');
 	}
 
-	public function liste_tag($id)
-	{
+	public function liste_tag($id){
 		$this->show('default/liste_tag');
 	}
-
 	public function detail_tag($id)
 	{
 		$this->show('default/detail_tag');
